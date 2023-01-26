@@ -10,7 +10,7 @@
             <img src="{{asset('img/registrar.jpg')}}" alt="Imagen para presentar el registro">
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -28,7 +28,6 @@
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
                             {{$message}}
                         </p>
-                        
                     @enderror
                 </div>
                 <div class="mb-5">
@@ -42,6 +41,11 @@
                         placeholder="Tu nombre de usuario" 
                         class="border-2 border-gray-200 p-2 w-full rounded-lg"
                     />
+                    @error('username')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{$message}}
+                        </p>
+                    @enderror
                 </div>
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -54,6 +58,11 @@
                         placeholder="Tu correo electrónico de registro" 
                         class="border-2 border-gray-200 p-2 w-full rounded-lg"
                     />
+                    @error('email')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{$message}}
+                        </p>
+                    @enderror
                 </div>
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -66,6 +75,11 @@
                         placeholder="Tu contraseña de registro" 
                         class="border-2 border-gray-200 p-2 w-full rounded-lg"
                     />
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{$message}}
+                        </p>
+                    @enderror
                 </div>
                 <div class="mb-5">
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
