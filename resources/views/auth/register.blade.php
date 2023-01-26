@@ -11,6 +11,7 @@
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
             <form action="/crear-cuenta" method="POST">
+                @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre
@@ -73,6 +74,8 @@
                 </div>
                 <input 
                     type="submit"
+                    value="Crear cuenta"
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg"
                 />
             </form>
         </div>
