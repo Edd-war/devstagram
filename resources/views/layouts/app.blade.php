@@ -17,7 +17,7 @@
 
                 <nav>
                     <a class="font-bold uppercase text-gray-600 text-sm" href="#">Iniciar Sesión</a>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">Crear cuenta</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="/crear-cuenta ">Crear cuenta</a>
                 </nav>
             </div>
         </header>
