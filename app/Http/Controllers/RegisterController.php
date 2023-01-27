@@ -39,6 +39,15 @@ class RegisterController extends Controller
             // 'password' => bcrypt($request->password),
         ]);
 
+        // Autenticar al usuario registrado
+        // auth()->attempt([
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ]);
+
+        // Otra forma de autenticar
+        auth()->attempt($request->only('email', 'password'));
+
         // Redireccionar
         return redirect()->route('post.index');
     }
