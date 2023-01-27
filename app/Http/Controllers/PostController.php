@@ -19,6 +19,8 @@ class PostController extends Controller
         // dd('Hola desde el controlador de Post');
         // dd(auth()->user());
         // dd($user->username);
-        return view('dashboard');
+        return view('dashboard', [
+            'user' => $user
+        ]);
     }
 }
