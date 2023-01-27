@@ -38,5 +38,8 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             // 'password' => bcrypt($request->password),
         ]);
+
+        // Redireccionar
+        return redirect()->route('post.index');
     }
 }
