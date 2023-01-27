@@ -15,10 +15,30 @@
                     Devstagram
                 </h1>
 
-                <nav>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">Iniciar Sesión</a>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('register')}}">Crear cuenta</a>
-                </nav>
+                {{-- @if (auth()->user())
+                    <p>Autenticado</p>
+                @else
+                    <p>No autenticado</p>
+                @endif --}}
+
+                @auth
+                    {{-- <p>Autenticado</p> --}}
+                    <nav class="flex gap-2 items-center">
+                        <a class="font-bold text-gray-600 text-sm" href="#">
+                            Hola: <span class="font-normal">{{ auth()->user()->username }}</span>
+                        </a>
+                        <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('register')}}">Cerrar Sesión</a>
+                    </nav>
+                @endauth
+
+                @guest
+                    {{-- <p>No autenticado</p> --}}
+                    <nav class="flex gap-2 items-center">
+                        <a class="font-bold uppercase text-gray-600 text-sm" href="#">Iniciar Sesión</a>
+                        <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('register')}}">Crear Cuenta</a>
+                    </nav>
+                @endguest
+
             </div>
         </header>
 
