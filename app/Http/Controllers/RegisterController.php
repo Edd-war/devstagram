@@ -17,6 +17,11 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        // dd($request->all());
+
+        // Modificar el Request para que el campo username sea slug
+        $request->request->add(['username' => Str::slug($request->username)]);
+
         $this->validate($request, [
             'name' => 'required|max:32|min:3',
             'username' => 'required|unique:users|max:12|min:3',
@@ -28,7 +33,7 @@ class RegisterController extends Controller
 
         User::create([
             'name' => $request->name,
-            'username' => Str::slug($request->username),
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             // 'password' => bcrypt($request->password),
