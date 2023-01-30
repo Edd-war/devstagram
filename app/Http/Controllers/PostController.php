@@ -31,7 +31,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         // dd('Creando publicación...');
         $this->validate(request(), [
@@ -40,12 +40,20 @@ class PostController extends Controller
             'imagen' => 'required'
         ]);
 
-        Post::create([
-            'titulo' => request('titulo'),
-            'contenido' => request('descripcion'),
-            'imagen' => request('imagen'),
-            'user_id' => auth()->user()->id
-        ]);
+        // Post::create([
+        //     'titulo' => request('titulo'),
+        //     'contenido' => request('descripcion'),
+        //     'imagen' => request('imagen'),
+        //     'user_id' => auth()->user()->id
+        // ]);
+
+        // OTRA FORMA DE CREAR REGISTROS
+        $post = new Post;
+        $post->titulo = $request->titulo;
+        $post->contenido = $request->descripcion;
+        $post->imagen = $request->imagen;
+        $post->user_id = auth()->user()->id;
+        $post->save();
 
         return redirect()->route('posts.index', ['user' => auth()->user()->username]);
     }
