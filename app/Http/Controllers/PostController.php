@@ -20,6 +20,12 @@ class PostController extends Controller
         // dd('Hola desde el controlador de Post');
         // dd(auth()->user());
         // dd($user->username);
+
+        // $posts = Post::where('user_id', $user->id)->latest()->paginate(5);
+        $posts = Post::where('user_id', $user->id)->get();
+
+        // dd($posts);
+
         return view('dashboard', [
             'user' => $user
         ]);
