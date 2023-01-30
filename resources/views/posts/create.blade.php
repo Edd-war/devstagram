@@ -52,7 +52,7 @@
                         name="descripcion" 
                         placeholder="Descripción de la publicación" 
                         class="border-2 border-gray-200 p-2 w-full rounded-lg @error('descripcion') border-red-500 @enderror"
-                    >{{old('descipcion')}}</textarea>
+                    >{{old('contenido')}}</textarea>
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
                             {{$message}}

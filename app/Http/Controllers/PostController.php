@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,17 @@ class PostController extends Controller
         // dd('Creando publicación...');
         $this->validate(request(), [
             'titulo' => 'required|max:255',
-            'contenido' => 'required',
-            'imagen' => 'required|image'
+            'descripcion' => 'required',
+            'imagen' => 'required'
         ]);
+
+        Post::create([
+            'titulo' => request('titulo'),
+            'contenido' => request('descripcion'),
+            'imagen' => request('imagen'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect()->route('posts.index', ['user' => auth()->user()->username]);
     }
 }
