@@ -19,3 +19,20 @@ const dropzone = new Dropzone('#dropzone',
     //         .getAttribute("content")
     // }
 });
+
+dropzone.on('sending', function(file, xhr, formData) {
+    console.log(formData);
+    // formData.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute("content"));
+});
+
+dropzone.on('success', function(file, response) {
+    console.log(response);
+});
+
+dropzone.on('error', function(file, message) {
+    console.log(message);
+});
+
+dropzone.on('removedfile', function() {
+    console.log('Archivo eliminado');
+});
