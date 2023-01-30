@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Devstagram - @yield('titulo')</title>
         @stack('styles')
-        <script src="{{asset('js/app.js')}}"></script>
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
     </head>
