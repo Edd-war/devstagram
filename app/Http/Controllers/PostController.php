@@ -48,12 +48,20 @@ class PostController extends Controller
         // ]);
 
         // OTRA FORMA DE CREAR REGISTROS
-        $post = new Post;
-        $post->titulo = $request->titulo;
-        $post->contenido = $request->descripcion;
-        $post->imagen = $request->imagen;
-        $post->user_id = auth()->user()->id;
-        $post->save();
+        // $post = new Post;
+        // $post->titulo = $request->titulo;
+        // $post->contenido = $request->descripcion;
+        // $post->imagen = $request->imagen;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+        // OTRA FORMA DE CREAR REGISTROS CON RELACIONES
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'contenido' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id
+        ]);
 
         return redirect()->route('posts.index', ['user' => auth()->user()->username]);
     }
