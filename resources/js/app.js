@@ -29,7 +29,7 @@ const dropzone = new Dropzone('#dropzone',
             this.options.thumbnail.call(
                 this,
                 imagenPublicada, 
-                `/storage/${imagenPublicada.name}`
+                `/uploads/${imagenPublicada.name}`
             );
             imagenPublicada.previewElement.classList.add(
                 'dz-success', 
