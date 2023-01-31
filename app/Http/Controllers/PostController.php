@@ -87,8 +87,19 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // dd('Eliminando publicación...');
-        dd("Eliminando ", $post->id);
+        // dd("Eliminando ", $post->id);
+        // if ($post->user_id === auth()->user()->id) 
+        // {
+        //     $post->delete();
+        // }
+        // else
+        // {
+        //     dd('No puedes eliminar este post');
+        // }
         // $post->delete();
         // return back();
+        $this->authorize('delete', $post);
+        $post->delete();
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
