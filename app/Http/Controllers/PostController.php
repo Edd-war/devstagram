@@ -87,6 +87,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // dd('Eliminando publicación...');
+        dd("Eliminando ", $post->id);
         // $post->delete();
         // return back();
     }
