@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
+use Termwind\Components\Dd;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
@@ -16,5 +18,18 @@ class PerfilController extends Controller
     public function index()
     {
         return view('perfil.index');
+    }
+
+    public function store(Request $request)
+    {
+        // dd('Guardando cambios');
+        
+        $request->request->add(['username' => Str::slug($request->username)]);
+
+        $this->validate($request,
+        [
+            'name' => 'required',
+            'username' => ['required', 'unique:users,username,'.auth()->user()->id, 'min:3', 'max:12', 'not_in:admin,administrador,editar-perfil'],
+        ]);
     }
 }
