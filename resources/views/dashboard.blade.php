@@ -48,31 +48,32 @@
                 </p>
                 @auth
                     @if ($user->id !== auth()->user()->id)
-                        <form 
-                            action="{{  route('users.follow', $user) }}"
-                            method="POST"
-                        >
-                            @csrf
-                            <input 
-                            type="submit"
-                            value="Seguir"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
-                            />
-
-                        </form>
-                        <form 
-                            action="{{  route('users.unfollow', $user) }}"
-                            method="POST"
-                        >
-                            @csrf
-                            @method('DELETE')
-                            <input 
-                            type="submit"
-                            value="Dejar de seguir"
-                            class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
-                            />
-
-                        </form>
+                        @if (!$user->isFollowing(auth()->user()))                            
+                            <form 
+                                action="{{  route('users.follow', $user) }}"
+                                method="POST"
+                            >
+                                @csrf
+                                <input 
+                                    type="submit"
+                                    value="Seguir"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+                                />
+                            </form>
+                        @else    
+                            <form 
+                                action="{{  route('users.unfollow', $user) }}"
+                                method="POST"
+                            >
+                                @csrf
+                                @method('DELETE')
+                                <input 
+                                    type="submit"
+                                    value="Dejar de seguir"
+                                    class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+                                />  
+                            </form>
+                        @endif
                     @endif
                 @endauth
             </div>
