@@ -46,6 +46,34 @@
                     {{ $user->posts->count() }}
                     <span class="font-normal"> Posts</span>
                 </p>
+                @auth
+                    
+                    <form 
+                        action=""
+                        method="POST"
+                    >
+                        @csrf
+                        <input 
+                        type="submit"
+                        value="Seguir"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+                        />
+
+                    </form>
+                    <form 
+                        action=""
+                        method="POST"
+                    >
+                        @csrf
+                        <input 
+                        type="submit"
+                        value="Dejar de seguir"
+                        class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+                        />
+
+                    </form>
+            
+                @endauth
             </div>
         </div>
     </div>
