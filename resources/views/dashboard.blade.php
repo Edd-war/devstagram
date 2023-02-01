@@ -61,10 +61,11 @@
 
                         </form>
                         <form 
-                            action=""
+                            action="{{  route('users.unfollow', $user) }}"
                             method="POST"
                         >
                             @csrf
+                            @method('DELETE')
                             <input 
                             type="submit"
                             value="Dejar de seguir"
