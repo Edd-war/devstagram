@@ -30,7 +30,6 @@ class PerfilController extends Controller
 
         $this->validate($request,
         [
-            'name' => 'required',
             'username' => ['required', 'unique:users,username,'.auth()->user()->id, 'min:3', 'max:12', 'not_in:admin,administrador,editar-perfil'],
         ]);
 
@@ -42,20 +41,16 @@ class PerfilController extends Controller
             $imagenServidor->fit(1000, 1000);
             $imagenPath = public_path('perfiles').'/'.$nombreImagen;
             $imagenServidor->save($imagenPath);
-            return response()->json(['imagen' => $nombreImagen]);
-        }
-        else
-        {
-            dd('No tiene imagen');
+            // return response()->json(['imagen' => $nombreImagen]);
         }
 
         // GUARDAR CAMBIOS
         $usuario= User::find(auth()->user()->id);
 
         $usuario->username = $request->username;
-        $usuario->imagen = $nombreImagen ?? '';
+        $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? null;
         $usuario->save();
-
+        // dd($usuario);
         // REDIRECIONAR
         // return redirect()->route('perfil.index')->with('mensaje', 'Perfil actualizado');
         return redirect()->route('posts.index', $usuario->username)->with('mensaje', 'Perfil actualizado');
