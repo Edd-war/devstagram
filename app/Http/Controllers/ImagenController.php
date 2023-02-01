@@ -21,7 +21,7 @@ class ImagenController extends Controller
         $imagenServidor->fit(1000, 1000);
 
         // $imagenPath = public_path('uploads/' . $nombreImagen);
-        $imagenPath = public_path('uploads/').'/'.$nombreImagen;
+        $imagenPath = public_path('uploads').'/'.$nombreImagen;
         $imagenServidor->save($imagenPath);
         // $imagenServidor->resize(800, null, function ($constraint) {
         //     $constraint->aspectRatio();
