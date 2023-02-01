@@ -66,8 +66,8 @@ class User extends Authenticatable
     }
 
     // ALMACENA A LOS USUARIOS QUE SIGUE UN USUARIO
-    // public function following()
-    // {
-    //     return $this->belongsToMany(User::class, 'followers', 'following_user_id', 'user_id');
-    // }
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
 }
