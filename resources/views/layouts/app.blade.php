@@ -8,6 +8,8 @@
         @stack('styles')
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow">
@@ -67,5 +69,6 @@
             Devstagram - Todos los derechos reservados
             {{now()->year}}
         </footer>
+        @livewireScripts
     </body>
 </html>
