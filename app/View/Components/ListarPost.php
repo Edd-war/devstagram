@@ -11,9 +11,12 @@ class ListarPost extends Component
      *
      * @return void
      */
-    public function __construct()
+
+    public $posts;
+
+    public function __construct($posts)
     {
-        //
+        $this->posts = $posts;
     }
 
     /**

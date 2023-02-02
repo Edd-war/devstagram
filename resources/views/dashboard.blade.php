@@ -82,28 +82,7 @@
 
     <section class="container mx-auto mt-10">
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
-        {{-- {{ dd($user->posts) }} --}}
-        {{-- {{dd($posts->count())}} --}}
-        {{-- @if ($user->posts as $post) --}}
-        @if ($posts->count())
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach ($posts as $post)
-                <div>
-                    <a href="{{ route('posts.show', ['post' => $post, 'user'=> $user]) }}">
-                        <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}">
-                    </a>
-                </div>
-                @endforeach
-            </div>
-
-            <div class="my-10">
-                {{ $posts->links('pagination::tailwind') }}
-            </div>
-
-        @else
-            <p class="text-center text-gray-700 text-2xl uppercase font-bold">No hay publicaciones</p>
-
-        @endif
+        <x-listar-post :posts="$posts" />
     </section>
 
 @endsection

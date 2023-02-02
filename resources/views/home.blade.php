@@ -6,7 +6,8 @@
 
 @section('contenido')
 
-    <X-listar-post />
+    <x-listar-post :posts="$posts" />
+
 
     {{-- @forelse ($posts as $post)
         <h1>{{ $post->titulo }}</h1>
