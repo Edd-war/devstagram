@@ -9,6 +9,8 @@
 @endpush
 
 @section('contenido')
+    @vite('resources/js/app.js')
+
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
             <form 
