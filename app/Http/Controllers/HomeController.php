@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function __invoke()
     {
         // OBTENER A QUINES SEGUIMOS
         $ids = auth()->user()->followings->pluck('id')->toArray();
-        $posts = Post::whereIn('user_id', $ids)->paginate(20);
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
 
         // dd($posts);
 
