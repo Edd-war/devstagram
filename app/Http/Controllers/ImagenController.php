@@ -12,6 +12,7 @@ class ImagenController extends Controller
     public function store(Request $request)
     {
         // return 'Imagen subida';
+        // dd($request->all());
         $imagen = $request->file('file');
 
         // $nombreImagen = Str::uuid() . '.' . $imagen->getClientOriginalExtension();

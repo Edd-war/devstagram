@@ -45,7 +45,7 @@ const dropzone = new Dropzone('#dropzone',
 // });
 
 dropzone.on('success', function(file, response) {
-    // console.log(response.imagen);
+    console.log(response.imagen);
     document.querySelector('#imagen').value = response.imagen;
     // document.querySelector('[name => "imagen"]').value = response.imagen;
 });
